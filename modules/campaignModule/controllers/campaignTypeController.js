@@ -40,7 +40,10 @@ const deleteCampaignType = async (req, res) => {
   const { id } = req.params;
   try {
     await campaignTypeService.deleteCampaignType(id);
-    res.status(204).end();
+    res.status(204).json({
+      message: "Campaign Type deleted successfully",
+      campaignTypeId: id,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" + error });
