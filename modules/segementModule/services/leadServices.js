@@ -1,20 +1,19 @@
 const Lead = require("../models/Lead");
 
-const createLead = async ({ customerId, customerName, phoneNo }) => {
-  try {
-    const lead = await Lead.create({ customerId, customerName, phoneNo });
-    return lead;
-  } catch (error) {
-    throw new Error("Error creating lead");
-  }
-};
-
 const getAllLeads = async () => {
   try {
     const leads = await Lead.findAll();
     return leads;
   } catch (error) {
     throw new Error("Error fetching leads");
+  }
+};
+const createLead = async ({ customerId, customerName, phoneNo }) => {
+  try {
+    const lead = await Lead.create({ customerId, customerName, phoneNo });
+    return lead;
+  } catch (error) {
+    throw new Error("Error creating lead");
   }
 };
 
