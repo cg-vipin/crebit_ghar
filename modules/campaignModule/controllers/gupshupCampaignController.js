@@ -37,6 +37,7 @@ const updateGupshupCampaign = async (req, res) => {
 
 const deleteGupshupCampaign = async (req, res) => {
   const { id } = req.params;
+
   try {
     await gupshupCampaignService.deleteGupshupCampaign(id);
     return res.json({
