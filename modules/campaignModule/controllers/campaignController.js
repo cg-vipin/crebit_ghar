@@ -2,8 +2,8 @@ const campaignService = require("../services/campaignServices");
 
 const getAllCampaign = async (req, res) => {
   try {
-    const campaignTypes = await campaignService.getAllCampaign();
-    res.json(campaignTypes);
+    const campaign = await campaignService.getAllCampaign();
+    res.json(campaign);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" + error });
@@ -13,8 +13,8 @@ const getAllCampaign = async (req, res) => {
 const createCampaign = async (req, res) => {
   const { type } = req.body;
   try {
-    const newCampaignType = await campaignService.createCampaign(type);
-    res.status(201).json(newCampaignType);
+    const newCampaign = await campaignService.createCampaign(type);
+    res.status(201).json(newCampaign);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" + error });
@@ -23,10 +23,9 @@ const createCampaign = async (req, res) => {
 
 const updateCampaign = async (req, res) => {
   const { id } = req.params;
-  const { type } = req.body;
   try {
-    const updatedCampaignType = await campaignService.updateCampaign(id, type);
-    res.json(updatedCampaignType);
+    const updatedCampaign = await campaignService.updateCampaign();
+    res.json(updatedCampaign);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" + error });
@@ -37,7 +36,10 @@ const deleteCampaign = async (req, res) => {
   const { id } = req.params;
   try {
     await campaignService.deleteCampaign(id);
-    res.json({ message: "Campaign deleted successfully", campaignId: id });
+    return res.json({
+      message: "Campaign deleted successfully",
+      campaignId: id,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" + error });

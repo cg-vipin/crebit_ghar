@@ -19,13 +19,15 @@ const createCampaignType = async (type) => {
 
 const updateCampaignType = async (id, type) => {
   try {
-    const campaignType = await CampaignType.findByPk(id);
-    if (!campaignType) {
+    const [updatedRowsCount] = await CampaignType.update(
+      { type: type },
+      { where: { id: id } }
+    );
+    if (updatedRowsCount === 0) {
       throw new Error("Campaign type not found");
     }
-    campaignType.type = type;
-    await campaignType.save();
-    return campaignType;
+    const updatedCampaignType = await CampaignType.findByPk(id);
+    return updatedCampaignType;
   } catch (error) {
     throw new Error("Error updating campaign type: " + error.message);
   }

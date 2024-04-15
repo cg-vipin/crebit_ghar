@@ -2,8 +2,8 @@ const Campaign = require("../models/campaign");
 
 const getAllCampaign = async () => {
   try {
-    const campaignTypes = await Campaign.findAll();
-    return campaignTypes;
+    const campaign = await Campaign.findAll();
+    return campaign;
   } catch (error) {
     throw new Error("Error fetching campaign types: " + error.message);
   }
@@ -17,27 +17,15 @@ const createCampaign = async (type) => {
   }
 };
 
-const updateCampaign = async (id, type) => {
-  try {
-    const campaignType = await Campaign.findByPk(id);
-    if (!campaignType) {
-      throw new Error("Campaign type not found");
-    }
-    campaignType.type = type;
-    await campaignType.save();
-    return campaignType;
-  } catch (error) {
-    throw new Error("Error updating campaign type: " + error.message);
-  }
-};
+const updateCampaign = async () => {};
 
 const deleteCampaign = async (id) => {
   try {
-    const campaignType = await Campaign.findByPk(id);
-    if (!campaignType) {
+    const campaign = await Campaign.findByPk(id);
+    if (!campaign) {
       throw new Error("Campaign type not found");
     }
-    await campaignType.destroy();
+    await campaign.destroy();
     return { message: "Campaign type deleted successfully" };
   } catch (error) {
     throw new Error("Error deleting campaign type: " + error.message);
