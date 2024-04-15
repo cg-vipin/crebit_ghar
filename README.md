@@ -49,7 +49,7 @@ The API is very simple. It has the following endpoints:
 
 ## Authors
 
-- **Vipin Kumar** - _Initial work_ - [vipinkumar2312](https://github.com/vipinkumar2312)
+- **Vipin Mehra** - _Initial work_ - [vipinmehra535](https://github.com/vipinmehra535)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
