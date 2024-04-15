@@ -1,4 +1,4 @@
-const GupshupCampaign = require("../models/gupshup_campaign");
+const GupshupCampaign = require("../models/gupshupCampaign");
 
 const getAllGupshupCampaign = async () => {
   try {
