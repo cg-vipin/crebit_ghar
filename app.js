@@ -6,6 +6,9 @@ const app = express();
 const PORT = 3000;
 
 const campaign = require("./modules/campaignModule/app");
+const campaignType = require("./modules/campaignTypeModule/app");
+const gupshupCampaign = require("./modules/gupshupCampaignModule/app");
+const recurringCampaign = require("./modules/recurringCampaignModule/app");
 
 // Database
 db.sync()
@@ -20,6 +23,9 @@ db.sync()
 app.use(bodyParser.json());
 
 app.use("/", campaign);
+app.use("/", campaignType);
+app.use("/", gupshupCampaign);
+app.use("/", recurringCampaign);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -17,7 +17,14 @@ const createRecurringCampaign = async (type) => {
   }
 };
 
-const updateRecurringCampaign = async () => {};
+const updateRecurringCampaign = async () => {
+  v;
+  try {
+    return await RecurringCampaign.update();
+  } catch (error) {
+    throw new Error("Error updating campaign type: " + error.message);
+  }
+};
 
 const deleteRecurringCampaign = async (id) => {
   try {
