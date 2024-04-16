@@ -6,6 +6,7 @@ const app = express();
 const PORT = 3000;
 
 const campaign = require("./modules/campaignModule/app");
+
 // Database
 db.sync()
   .then(() => {
@@ -17,10 +18,6 @@ db.sync()
 
 // Middleware
 app.use(bodyParser.json());
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
 
 app.use("/", campaign);
 

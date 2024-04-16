@@ -8,7 +8,7 @@ const recurringCampaign = db.define("recurring_campaign", {
     autoIncrement: true,
   },
   campaign_ids: {
-    type: sequelize.ARRAY(DataTypes.INTEGER),
+    type: sequelize.ARRAY(sequelize.INTEGER),
   },
   start_date: {
     type: sequelize.DATE,
