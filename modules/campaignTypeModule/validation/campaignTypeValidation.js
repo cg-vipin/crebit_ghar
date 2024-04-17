@@ -4,6 +4,6 @@ const campaignTypeSchema = Joi.object({
   type: Joi.string().required(),
 });
 
-
-
-module.exports = campaignTypeSchema;
+module.exports = {
+  campaignTypeSchema,
+};

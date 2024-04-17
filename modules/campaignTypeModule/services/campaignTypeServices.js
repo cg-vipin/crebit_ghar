@@ -9,6 +9,15 @@ const getAllCampaignTypes = async () => {
   }
 };
 
+const getCampaignTypeById = async (id) => {
+  try {
+    const campaignTypes = await CampaignType.findByPk(id);
+    return campaignTypes ?? {};
+  } catch (error) {
+    throw new Error("Error fetching campaign types: " + error.message);
+  }
+};
+
 const createCampaignType = async (type) => {
   try {
     return await CampaignType.create({ type });
@@ -48,6 +57,7 @@ const deleteCampaignType = async (id) => {
 
 module.exports = {
   getAllCampaignTypes,
+  getCampaignTypeById,
   createCampaignType,
   updateCampaignType,
   deleteCampaignType,

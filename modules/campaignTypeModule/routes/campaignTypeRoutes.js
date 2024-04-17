@@ -2,15 +2,20 @@ const express = require("express");
 const router = express.Router();
 const campaignTypeController = require("../controllers/campaignTypeController");
 const validateCampaign = require("../../../middleware/validation");
-const campaignSchema = require("../validation/campaignTypeValidation");
+const { campaignTypeSchema } = require("../validation/campaignTypeValidation");
 
 router.get("/", campaignTypeController.getAllCampaignTypes);
+router.get("/:id", campaignTypeController.getCampaignTypeById);
 router.post(
   "/",
-  validateCampaign(campaignSchema),
+  validateCampaign(campaignTypeSchema),
   campaignTypeController.createCampaignType
 );
-router.patch("/:id", campaignTypeController.updateCampaignType);
+router.patch(
+  "/:id",
+  validateCampaign(campaignTypeSchema),
+  campaignTypeController.updateCampaignType
+);
 router.delete("/:id", campaignTypeController.deleteCampaignType);
 
 module.exports = router;

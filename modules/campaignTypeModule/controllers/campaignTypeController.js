@@ -6,7 +6,18 @@ const getAllCampaignTypes = async (req, res) => {
     res.json(campaignTypes);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server Error" + error });
+    res.json({ message: "Server Error" + error });
+  }
+};
+
+const getCampaignTypeById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const campaignType = await campaignTypeService.getCampaignTypeById(id);
+    res.json(campaignType);
+  } catch (error) {
+    console.error(error);
+    res.json({ message: "Server Error" + error });
   }
 };
 
@@ -17,7 +28,7 @@ const createCampaignType = async (req, res) => {
     res.status(201).json(newCampaignType);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server Error" + error });
+    res.json({ message: "Server Error" + error });
   }
 };
 
@@ -32,7 +43,7 @@ const updateCampaignType = async (req, res) => {
     res.json(updatedCampaignType);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server Error" + error });
+    res.json({ message: error.message });
   }
 };
 
@@ -46,12 +57,13 @@ const deleteCampaignType = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server Error" + error });
+    res.json({ message: +error });
   }
 };
 
 module.exports = {
   getAllCampaignTypes,
+  getCampaignTypeById,
   createCampaignType,
   updateCampaignType,
   deleteCampaignType,
