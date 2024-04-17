@@ -12,7 +12,7 @@ const recurringCampaign = require("./modules/recurringCampaignModule/app");
 const segement = require("./modules/segementModule/app");
 
 // Database
-db.sync()
+db.authenticate()
   .then(() => {
     console.log("Connection to database has been established successfully.");
   })
@@ -25,7 +25,11 @@ app.use(bodyParser.json());
 
 // Routes
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  const message = {
+    message: "Hello World!",
+    status: 200,
+  };
+  res.json(message);
 });
 
 app.use("/", campaign);

@@ -4,9 +4,6 @@ const db = new Sequelize('TestDB', 'postgres', '9999', {
     host: 'localhost',
     dialect: 'postgres',
 },
-
-
-
 );
 
 
