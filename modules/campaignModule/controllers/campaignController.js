@@ -11,9 +11,9 @@ const getAllCampaign = async (req, res) => {
 };
 
 const createCampaign = async (req, res) => {
-  const { type } = req.body;
+  const { data } = req.body;
   try {
-    const newCampaign = await campaignService.createCampaign(type);
+    const newCampaign = await campaignService.createCampaign(data);
     res.status(201).json(newCampaign);
   } catch (error) {
     console.error(error);

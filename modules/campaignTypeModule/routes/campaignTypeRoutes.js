@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const campaignTypeController = require("../controllers/campaignTypeController");
-const validateCampaign = require("../../../middleware/campaignTypeValidation");
-const campaignSchema = require("../../campaignTypeModule/validation/campaignTypeValidation");
+const validateCampaign = require("../../../middleware/validation");
+const campaignSchema = require("../validation/campaignTypeValidation");
 
 router.get("/", campaignTypeController.getAllCampaignTypes);
 router.post(

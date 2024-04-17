@@ -1,7 +1,9 @@
 const Joi = require("joi");
 
-const campaignSchema = Joi.object({
+const campaignTypeSchema = Joi.object({
   type: Joi.string().required(),
 });
 
-module.exports = campaignSchema;
+
+
+module.exports = campaignTypeSchema;
