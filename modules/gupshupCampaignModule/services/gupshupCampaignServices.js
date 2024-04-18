@@ -17,7 +17,18 @@ const createGupshupCampaign = async (type) => {
   }
 };
 
-const updateGupshupCampaign = async () => {};
+const updateGupshupCampaign = async (id, updatedData) => {
+  try {
+    const campaign = await GupshupCampaign.findByPk(id);
+    if (!campaign) {
+      throw new Error('Campaign not found');
+    }
+    const updatedCampaign = await campaign.update(updatedData);
+    return updatedCampaign;
+  } catch (error) {
+    throw new Error(`Failed to update campaign: ${error.message}`);
+  }
+};
 
 const deleteGupshupCampaign = async (id) => {
   try {

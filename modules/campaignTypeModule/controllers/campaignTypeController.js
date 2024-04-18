@@ -22,9 +22,9 @@ const getCampaignTypeById = async (req, res) => {
 };
 
 const createCampaignType = async (req, res) => {
-  const { type } = req.body;
+  const data = req.body;
   try {
-    const newCampaignType = await campaignTypeService.createCampaignType(type);
+    const newCampaignType = await campaignTypeService.createCampaignType(data);
     return res.status(201).json(newCampaignType);
   } catch (error) {
     console.error(error);

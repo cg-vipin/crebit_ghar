@@ -25,9 +25,11 @@ const createRecurringCampaign = async (req, res) => {
 
 const updateRecurringCampaign = async (req, res) => {
   const { id } = req.params;
+
+  const data = req.body;
   try {
     const updatedRecurringCampaign =
-      await recurringCampaignService.updateRecurringCampaign();
+      await recurringCampaignService.updateRecurringCampaign( id, data);
     res.json(updatedRecurringCampaign);
   } catch (error) {
     console.error(error);

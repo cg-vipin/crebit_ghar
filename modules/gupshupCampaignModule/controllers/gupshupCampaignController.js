@@ -25,9 +25,11 @@ const createGupshupCampaign = async (req, res) => {
 
 const updateGupshupCampaign = async (req, res) => {
   const { id } = req.params;
+
+  const data = req.body;
   try {
     const updatedGupshupCampaign =
-      await gupshupCampaignService.updateGupshupCampaign();
+      await gupshupCampaignService.updateGupshupCampaign(id, data);
     res.json(updatedGupshupCampaign);
   } catch (error) {
     console.error(error);

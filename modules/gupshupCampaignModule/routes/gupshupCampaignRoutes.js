@@ -8,10 +8,14 @@ const router = express.Router();
 router.get("/", gupshupCampaignController.getAllGupshupCampaign);
 router.post(
   "/",
-  validate(gupshupCampaignSchema),
+  validate(gupshupCampaignSchema.gupshupCampaignSchema),
   gupshupCampaignController.createGupshupCampaign
 );
-router.patch("/:id", gupshupCampaignController.updateGupshupCampaign);
+router.patch(
+  "/:id",
+  validate(gupshupCampaignSchema.gupshupUpdateCampaignSchema),
+  gupshupCampaignController.updateGupshupCampaign
+);
 router.delete("/:id", gupshupCampaignController.deleteGupshupCampaign);
 
 module.exports = router;

@@ -18,4 +18,25 @@ const gupshupCampaignSchema = Joi.object({
   updatedBy: Joi.string(),
 });
 
-module.exports = gupshupCampaignSchema;
+const gupshupUpdateCampaignSchema = Joi.object({
+  campaign_id: Joi.number().integer().positive(),
+  campaign_name: Joi.string(),
+  file_path: Joi.string(),
+  status: Joi.string(),
+  timestamp: Joi.date(),
+  transaction_id: Joi.string(),
+  response: Joi.string().allow("", null),
+  success_no: Joi.number().integer().min(0).default(0),
+  fail_no: Joi.number().integer().min(0).default(0),
+  duplicates_no: Joi.number().integer().min(0).default(0),
+  campaign_type: Joi.string(),
+  createdDate: Joi.date().iso(),
+  updatedDate: Joi.date().iso(),
+  createdBy: Joi.string(),
+  updatedBy: Joi.string(),
+});
+
+module.exports = {
+  gupshupCampaignSchema,
+  gupshupUpdateCampaignSchema
+};

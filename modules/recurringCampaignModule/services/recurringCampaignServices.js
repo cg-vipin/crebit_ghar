@@ -17,12 +17,16 @@ const createRecurringCampaign = async (type) => {
   }
 };
 
-const updateRecurringCampaign = async () => {
-  v;
+const updateRecurringCampaign = async (id, updatedData) => {
   try {
-    return await RecurringCampaign.update();
+    const campaign = await RecurringCampaign.findByPk(id);
+    if (!campaign) {
+      throw new Error("Campaign not found");
+    }
+    const updatedCampaign = await campaign.update(updatedData);
+    return updatedCampaign;
   } catch (error) {
-    throw new Error("Error updating campaign type: " + error.message);
+    throw new Error(`Failed to update campaign: ${error.message}`);
   }
 };
 
