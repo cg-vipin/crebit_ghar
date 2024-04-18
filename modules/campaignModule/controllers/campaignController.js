@@ -23,8 +23,11 @@ const createCampaign = async (req, res) => {
 
 const updateCampaign = async (req, res) => {
   const { id } = req.params;
+  const data = req.body;
+
+
   try {
-    const updatedCampaign = await campaignService.updateCampaign();
+    const updatedCampaign = await campaignService.updateCampaign(id, data);
     res.json(updatedCampaign);
   } catch (error) {
     console.error(error);

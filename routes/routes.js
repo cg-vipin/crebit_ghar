@@ -1,21 +1,19 @@
 const express = require("express");
-const app = express();
+const router = express.Router();
 
-// Import routes
-const routes = {
-    campaign: "../modules/campaignModule/routes/campaignRoutes",
-    campaignType: "../modules/campaignTypeModule/routes/campaignTypeRoutes",
-    gupshupCampaign:
-        "../modules/gupshupCampaignModule/routes/gupshupCampaignRoutes",
-    recurringCampaign:
-        "../modules/recurringCampaignModule/routes/recurringCampaign",
-    leads: "../modules/segementModule/routes/leadRoutes",
-    segments: "../modules/segementModule/routes/segmentRoutes",
-};
+// Define route objects
+const routes = [
+    { path: "/campaign", route: require("../modules/campaignModule/routes/campaignRoutes") },
+    { path: "/campaignType", route: require("../modules/campaignTypeModule/routes/campaignTypeRoutes") },
+    { path: "/gupshupCampaign", route: require("../modules/gupshupCampaignModule/routes/gupshupCampaignRoutes") },
+    { path: "/recurringCampaign", route: require("../modules/recurringCampaignModule/routes/recurringCampaign") },
+    { path: "/leads", route: require("../modules/segementModule/routes/leadRoutes") },
+    { path: "/segments", route: require("../modules/segementModule/routes/segmentRoutes") }
+];
 
 // Register routes
-Object.entries(routes).forEach(([path, route]) => {
-    app.use(`/${path}`, require(route));
+routes.forEach(({ path, route }) => {
+    router.use(path, route);
 });
 
-module.exports = app;
+module.exports = router;

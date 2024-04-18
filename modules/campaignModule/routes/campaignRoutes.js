@@ -8,10 +8,11 @@ const router = express.Router();
 router.get("/", campaignController.getAllCampaign);
 router.post(
   "/",
-  validate(campaignTypeSchema),
+  validate(campaignTypeSchema.campaignSchema),
+
   campaignController.createCampaign
 );
-router.patch("/:id", campaignController.updateCampaign);
+router.patch("/:id", validate(campaignTypeSchema.campaignUpdateSchema), campaignController.updateCampaign);
 router.delete("/:id", campaignController.deleteCampaign);
 
 module.exports = router;

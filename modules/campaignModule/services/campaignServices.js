@@ -17,7 +17,23 @@ const createCampaign = async (type) => {
   }
 };
 
-const updateCampaign = async () => {};
+const updateCampaign = async (id, updatedData) => {
+  try {
+    // Find the campaign by ID
+    const campaign = await Campaign.findByPk(id);
+
+    if (!campaign) {
+      throw new Error('Campaign not found');
+    }
+
+    // Update the campaign with the provided data
+    const updatedCampaign = await campaign.update(updatedData);
+
+    return updatedCampaign;
+  } catch (error) {
+    throw new Error(`Failed to update campaign: ${error.message}`);
+  }
+};
 
 const deleteCampaign = async (id) => {
   try {
