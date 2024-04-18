@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const campaignTypeRoutes = require("../campaignTypeModule/routes/campaignTypeRoutes");
+const campaignTypeRoutes = require("./routes/campaignTypeRoutes");
 
 // Routes
 app.use("/campaignType", campaignTypeRoutes);

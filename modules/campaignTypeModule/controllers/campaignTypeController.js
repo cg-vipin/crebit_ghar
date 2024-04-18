@@ -3,10 +3,10 @@ const campaignTypeService = require("../services/campaignTypeServices");
 const getAllCampaignTypes = async (req, res) => {
   try {
     const campaignTypes = await campaignTypeService.getAllCampaignTypes();
-    res.json(campaignTypes);
+    return res.json(campaignTypes);
   } catch (error) {
     console.error(error);
-    res.json({ message: "Server Error" + error });
+    return res.status(400).json({ message: error.message });
   }
 };
 
@@ -14,10 +14,10 @@ const getCampaignTypeById = async (req, res) => {
   const { id } = req.params;
   try {
     const campaignType = await campaignTypeService.getCampaignTypeById(id);
-    res.json(campaignType);
+    return res.json(campaignType);
   } catch (error) {
     console.error(error);
-    res.json({ message: "Server Error" + error });
+    return res.status(400).json({ message: error.message });
   }
 };
 
@@ -25,10 +25,10 @@ const createCampaignType = async (req, res) => {
   const { type } = req.body;
   try {
     const newCampaignType = await campaignTypeService.createCampaignType(type);
-    res.status(201).json(newCampaignType);
+    return res.status(201).json(newCampaignType);
   } catch (error) {
     console.error(error);
-    res.json({ message: "Server Error" + error });
+    return res.status(400).json({ message: error.message });
   }
 };
 
@@ -40,10 +40,10 @@ const updateCampaignType = async (req, res) => {
       id,
       type
     );
-    res.json(updatedCampaignType);
+    return res.json(updatedCampaignType);
   } catch (error) {
     console.error(error);
-    res.json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 
@@ -57,7 +57,7 @@ const deleteCampaignType = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.json({ message: +error });
+    return res.status(400).json({ message: error.message });
   }
 };
 

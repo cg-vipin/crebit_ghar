@@ -5,11 +5,11 @@ const db = require("./config/database");
 const app = express();
 const PORT = 3000;
 
-const campaign = require("./modules/campaignModule/app");
-const campaignType = require("./modules/campaignTypeModule/app");
-const gupshupCampaign = require("./modules/gupshupCampaignModule/app");
-const recurringCampaign = require("./modules/recurringCampaignModule/app");
-const segement = require("./modules/segementModule/app");
+const routes = require("./routes/routes");
+// const campaignType = require("./modules/campaignTypeModule/app");
+// const gupshupCampaign = require("./modules/gupshupCampaignModule/app");
+// const recurringCampaign = require("./modules/recurringCampaignModule/app");
+// const segement = require("./routes/routes");
 
 // Database
 db.authenticate()
@@ -32,11 +32,12 @@ app.get("/", (req, res) => {
   res.json(message);
 });
 
-app.use("/", campaign);
-app.use("/", campaignType);
-app.use("/", gupshupCampaign);
-app.use("/", recurringCampaign);
-app.use("/", segement);
+app.use("/", routes);
+app.use("/", routes);
+
+// app.use("/", gupshupCampaign);
+// app.use("/", recurringCampaign);
+// app.use("/", segement);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

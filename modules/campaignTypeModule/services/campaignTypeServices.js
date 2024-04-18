@@ -12,7 +12,10 @@ const getAllCampaignTypes = async () => {
 const getCampaignTypeById = async (id) => {
   try {
     const campaignTypes = await CampaignType.findByPk(id);
-    return campaignTypes ?? {};
+    if (!campaignTypes) {
+      throw new Error("Campaign type not found");
+    }
+    return campaignTypes;
   } catch (error) {
     throw new Error("Error fetching campaign types: " + error.message);
   }
